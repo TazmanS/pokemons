@@ -10,9 +10,12 @@ const Main = ({children}) => {
 }
 
 const StyledContainer = styled.main `
-  margin-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
   background-color: #EAEBEDFF;
+  font-size: 29px;
+  line-height: 31px;
+  color: #000000;
+  font-weight: 600;
 `
 
 export default Main

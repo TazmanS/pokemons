@@ -53,10 +53,10 @@ function App() {
     <StyledContainer>
       <Header>
         <StyledTitle>{name ? name : 'Pokemon Name'}</StyledTitle>
-        <div>Try “pikachu”, “charizard”, or “mew”</div>
+        <StyledText>Try “pikachu”, “charizard”, or “mew”</StyledText>
         <StyledSearch>
           <BaseInput value={search} change={onChange}/>
-          <BaseButton click={onClick} BGcolor={'#EAEBEDFF'}>
+          <BaseButton click={onClick}>
             Submit
           </BaseButton>
         </StyledSearch>
@@ -66,9 +66,11 @@ function App() {
         </StyledError> 
         }
       </Header>
+      <StyledLine></StyledLine>
       {pokemon.name.trim() &&
       <Main> 
         <BaseImg pokemon={pokemon}/>
+        <StyledName>{name}</StyledName>
         <div>Experience: {pokemon.experience}</div>
         <div>Height: {pokemon.height}</div>
         <div>Wieght: {pokemon.wieght}</div>
@@ -80,7 +82,7 @@ function App() {
 }
 
 const StyledContainer = styled.div`
-  margin: 25px auto;
+  margin: 35px auto;
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -88,18 +90,47 @@ const StyledContainer = styled.div`
   text-align: center;
 `
 
-const StyledTitle = styled.h1`
+const StyledTitle = styled.div`
   margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+  font-weight: 600;
 ` 
+
+const StyledText = styled.div`
+  font-size: 15px;
+  line-height: 17px;
+  color: #000000;
+  font-weight: 600;
+  margin: 7px 0 10px;
+`
 
 const StyledSearch = styled.div`
   margin-top: 5px;
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
 `
 
 const StyledError = styled.div`
   color: red;
+`
+
+const StyledLine = styled.div`
+  width: 339px;
+  height: 2px;
+  background-color: #d2dbde;
+  border: 1px solid #d2dbde;
+  margin: 22px 0 33px;
+`
+
+const StyledName = styled.div`
+  font-size: 30px;
+  line-height: 32px;
+  color: #000000;
+  font-weight: 800;
+  margin-bottom: 20px;
 `
 
 export default App

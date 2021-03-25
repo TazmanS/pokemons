@@ -9,7 +9,10 @@ const BaseImg = ({pokemon}) => {
 
 const StyledContainer = styled.img `
   max-width: 100vw;
-  width: 300px;
+  width: 263px;
+  height: 223px;
+  margin: 37px;
+  margin-bottom: 16px;
 `
 
 export default BaseImg

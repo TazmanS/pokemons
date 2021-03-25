@@ -9,10 +9,13 @@ const BaseInput = ({value, change}) => {
 
 const StyledContainer = styled.input `
   padding: 0 5px;
-  border-radius: 5px;
-  border: 1px solid black;
   outline: 0;
   outline-offset: 0;
+  width: 243px;
+  height: 43px;
+  border-radius: 5px;
+  background-color: #eaebed;
+  border: 1.5px solid #946c95;
 `
 
 export default BaseInput
