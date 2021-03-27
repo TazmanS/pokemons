@@ -31,6 +31,7 @@ function App() {
     }
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`)
+      console.log(response)
       setPokemon({
         name: search,
         url: response.data.sprites.other['official-artwork'].front_default,
@@ -69,12 +70,15 @@ function App() {
       <StyledLine></StyledLine>
       {pokemon.name.trim() &&
       <Main> 
+        <StyledNumber>number</StyledNumber>
         <BaseImg pokemon={pokemon}/>
-        <StyledName>{name}</StyledName>
-        <div>Experience: {pokemon.experience}</div>
-        <div>Height: {pokemon.height}</div>
-        <div>Wieght: {pokemon.wieght}</div>
-        <div>Order: {pokemon.order}</div>
+        <StyledName>{name}<sup>{pokemon.order}</sup></StyledName>
+        <StyledList>
+          <li>Experience: {pokemon.experience}</li>
+          <li>Height: {pokemon.height}</li>
+          <li>Wieght: {pokemon.wieght}</li>
+          <li>Order: {pokemon.order}</li>
+        </StyledList>
       </Main>
       }
     </StyledContainer>
@@ -82,12 +86,16 @@ function App() {
 }
 
 const StyledContainer = styled.div`
-  margin: 35px auto;
-  max-width: 100%;
+  margin: 0px auto;
+  padding: 34px 0;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  border: 1px solid black;
+  box-sizing: border-box;
 `
 
 const StyledTitle = styled.div`
@@ -103,14 +111,15 @@ const StyledText = styled.div`
   line-height: 17px;
   color: #000000;
   font-weight: 600;
-  margin: 7px 0 10px;
+  margin: 1px 0 15px;
 `
 
 const StyledSearch = styled.div`
   margin-top: 5px;
+  width: 340px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
 `
 
 const StyledError = styled.div`
@@ -119,7 +128,7 @@ const StyledError = styled.div`
 
 const StyledLine = styled.div`
   width: 339px;
-  height: 2px;
+  height: 0px;
   background-color: #d2dbde;
   border: 1px solid #d2dbde;
   margin: 22px 0 33px;
@@ -131,6 +140,32 @@ const StyledName = styled.div`
   color: #000000;
   font-weight: 800;
   margin-bottom: 20px;
+`
+
+const StyledNumber = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+  line-height: 16px;
+  color: #000000;
+  font-weight: 600;
+`
+
+const StyledList = styled.ul `
+  display: flex;
+  flex-direction: column;
+  margin-left: 36px;
+  padding-right: 36px;
+  text-align: left;
+
+  li{
+    padding: 0 5px;
+  }
+
+  li::marker{
+    font-size: 20px;
+  }
 `
 
 export default App
