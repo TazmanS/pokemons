@@ -17,8 +17,16 @@ function App() {
     experience: '',
     height: '',
     wieght: '',
-    order: ''
+    order: '',
+    fetchedAt: '',
+    id: null,
   })
+
+  const formatDate = date => `
+    ${date.getHours()}:${String(date.getMinutes())
+      .padStart(2, '0')} ${String(date.getSeconds(),)
+      .padStart(2, '0')}.${String(date.getMilliseconds())
+      .padStart(3, '0')}`
 
   const onChange = (event) => {
     setSearch(event.target.value)
@@ -38,7 +46,9 @@ function App() {
         experience:  response.data['base_experience'],
         height:  response.data.height,
         wieght:  response.data.weight,
-        order:  response.data.order
+        order:  response.data.order,
+        fetchedAt: formatDate(new Date()),
+        id: response.data.id
       })
       setName(search[0].toUpperCase() + search.slice(1) )
       setSearch('')
@@ -70,9 +80,9 @@ function App() {
       <StyledLine></StyledLine>
       {pokemon.name.trim() &&
       <Main> 
-        <StyledNumber>number</StyledNumber>
+        <StyledNumber>{pokemon.fetchedAt}</StyledNumber>
         <BaseImg pokemon={pokemon}/>
-        <StyledName>{name}<sup>{pokemon.order}</sup></StyledName>
+        <StyledName>{name}<sup>{pokemon.id}</sup></StyledName>
         <StyledList>
           <li>Experience: {pokemon.experience}</li>
           <li>Height: {pokemon.height}</li>
